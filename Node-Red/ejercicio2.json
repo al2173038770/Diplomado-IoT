@@ -1,0 +1,235 @@
+[
+    {
+        "id": "4d6bf8f0.181e",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "87ac4a16.3bdea8",
+        "type": "inject",
+        "z": "4d6bf8f0.181e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "4",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Fecha",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "5c0e210e.7bee9"
+            ]
+        ]
+    },
+    {
+        "id": "ea10c56c.6a9af",
+        "type": "debug",
+        "z": "4d6bf8f0.181e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "5c0e210e.7bee9",
+        "type": "function",
+        "z": "4d6bf8f0.181e",
+        "name": "",
+        "func": "//Lo que está depues de \"//\" son comentarios\n//Crear un objeto Date apartir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "5734f0d4.eb82b8",
+                "ea10c56c.6a9af",
+                "a0b78487.878448"
+            ]
+        ]
+    },
+    {
+        "id": "a23c42d7.db8df",
+        "type": "ui_switch",
+        "z": "4d6bf8f0.181e",
+        "name": "",
+        "label": "switch-Label",
+        "tooltip": "",
+        "group": "14fa36fe.b2c861",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 650,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "adb02546.1fd1c",
+        "type": "ui_switch",
+        "z": "4d6bf8f0.181e",
+        "name": "",
+        "label": "switch-Label",
+        "tooltip": "",
+        "group": "6eaf50a4.fbbf2",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 650,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5734f0d4.eb82b8",
+        "type": "ui_text",
+        "z": "4d6bf8f0.181e",
+        "group": "463b1d2.773cd64",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fecha-Label",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 650,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "a0b78487.878448",
+        "type": "ui_text",
+        "z": "4d6bf8f0.181e",
+        "group": "463b1d2.773cd64",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fecha-Label",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 650,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4400dc7e.ff2424",
+        "type" "ui_gauge",
+        "z": "4d6bf8f0.181e",
+        "name": "",
+        "group": "463b1d2.773cd64",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 630,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "14fa36fe.b2c861",
+        "type": "ui_group",
+        "name": "switch3b",
+        "tab": "dc59466a.f09bd8",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6eaf50a4.fbbf2",
+        "type": "ui_group",
+        "name": "switch2b",
+        "tab": "dc59466a.f09bd8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "463b1d2.773cd64",
+        "type": "ui_group",
+        "name": "Fecha",
+        "tab": "dc59466a.f09bd8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "dc59466a.f09bd8",
+        "type": "ui_tab",
+        "name": "Ejercicio 2",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]:

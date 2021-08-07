@@ -1,0 +1,345 @@
+[
+    {
+        "id": "1a11a8c6.eed49f",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f9e13090.10941",
+        "type": "inject",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2dbd154a.ef152a",
+        "type": "ui_switch",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "cf39abdc.25b438",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 330,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "abd48be3.e46a18",
+        "type": "ui_gauge",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "group": "cf39abdc.25b438",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Nivel",
+        "label": "C° - units",
+        "format": "{{value}}",
+        "min": "15",
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 610,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f3abaef9.cc2ff",
+        "type": "ui_chart",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "group": "258fb6b1.9ed532",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatura vs Tiempo",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "15",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 650,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cde6ed06.236de8",
+        "type": "function",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "func": "msg.payload = msg.payload.ID;\nmsg.payload = msg.payload.Localidad;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 60,
+        "wires": [
+            [
+                "604c5330.ed254c",
+                "64b82d24.fae8f4"
+            ]
+        ]
+    },
+    {
+        "id": "bb885a3.c2ac228",
+        "type": "function",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "func": "msg.payload = msg.payload.Temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 120,
+        "wires": [
+            [
+                "abd48be3.e46a18"
+            ]
+        ]
+    },
+    {
+        "id": "ca6bc842.f1b588",
+        "type": "function",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "func": "msg.topic = msg.payloa.ID;\nmsg.payload = msg.payload.Temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "f3abaef9.cc2ff"
+            ]
+        ]
+    },
+    {
+        "id": "84b95f81.2d92e8",
+        "type": "mqtt in",
+        "z": "1a11a8c6.eed49f",
+        "name": "codigo",
+        "topic": "codigoIoT/SIC/flow3/temp",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "afef843c.020c4",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "92f16a26.e0536"
+            ]
+        ]
+    },
+    {
+        "id": "e3b172fa.6f10a8",
+        "type": "debug",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "92f16a26.e0536",
+        "type": "json",
+        "z": "1a11a8c6.eed49f",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 230,
+        "y": 100,
+        "wires": [
+            [
+                "cde6ed06.236de8",
+                "bb885a3.c2ac228",
+                "ca6bc842.f1b588"
+            ]
+        ]
+    },
+    {
+        "id": "64b82d24.fae8f4",
+        "type": "ui_text",
+        "z": "1a11a8c6.eed49f",
+        "group": "5598cfa6.8af9a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Ciudad",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 620,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "604c5330.ed254c",
+        "type": "ui_text",
+        "z": "1a11a8c6.eed49f",
+        "group": "5598cfa6.8af9a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Mensaje",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 620,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "cf39abdc.25b438",
+        "type": "ui_group",
+        "name": "Control-Label",
+        "tab": "b34508f6.5aff3",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "258fb6b1.9ed532",
+        "type": "ui_group",
+        "name": "Historial-Label",
+        "tab": "b34508f6.5aff3",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "afef843c.020c4",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "18.197.199.178",
+        "port": "1883",
+        "clientid": "arturo_rs",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "5598cfa6.8af9a",
+        "type": "ui_group",
+        "name": "Identificacion-Label",
+        "tab": "b34508f6.5aff3",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b34508f6.5aff3",
+        "type": "ui_tab",
+        "name": "Ejercicio 3: Temperatura ",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]

@@ -1,0 +1,22 @@
+{\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola_panteras\"\}\n
+
+{\"ID\":\"Arturo_Reyes_Santana\",\"Temp\":\"Estado de México\",\"Temp\",\"18°\"\}
+
+"{\"ID\":\"Arturo Reyes Santana\",\"Temp\":\"12\",\"mnsg\":\"Estado de Mexico\"}"
+
+
+mosquitto_pub -h 18.197.199.178 -i artreysan -t codigoIoT/SIC/flow3/temp -m "{\"ID\":\"Arturo_Reyes_Santana\",\"Temp\":\"18\",\"msg\":\"Estado_de_Mexico\"}" 
+
+"
+{
+    \"ID\":	\"Arturo_Reyes_Santana\",
+    \"Temp\":	\"18\",
+    \"mnsg\":	\"Estado_de_Mexico\"
+}
+"
+
+{
+    ID: Arturo Reyes Santana,
+    Temp: 18,
+    msng: Estado de Mexico
+}

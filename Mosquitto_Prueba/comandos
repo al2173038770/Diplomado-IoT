@@ -1,0 +1,23 @@
+Comando:
+Conexion:
+mosquitto_sub -h localhost -i sub_1 -t codigoiot/SICUAM2/test
+
+Envio de mesaje:
+mosquitto_pub -h localhost -i pub_1 -t codigoiot/SICUAM2/test -m {\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola_panteras\"\}
+
+Mesaje de salida:
+{"ID":"Arturo_ReySan","msg":"Hola_panteras"}
+
+
+
+Ejercicio:
+
+Conexion:
+mosquito_sub -h 18.194.176.210 -i Panteras_Uam_SIC2 -t codigo/SIC2/publictest/test
+
+Mensaje:
+mosquitto_pub -h 18.194.176.210 -i Panteras_Uam_SIC2_pub -t codigoiot/SIC2/publictest/test -m {\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola_panteras\"\}
+
+
+
+mosquitto_pub -h 3.66.119.222 -i arturo_rs -q 2 -t esp32/data/grupo2 -m {\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola\"\}                [9:19:50]
