@@ -21,3 +21,14 @@ mosquitto_pub -h 18.194.176.210 -i Panteras_Uam_SIC2_pub -t codigoiot/SIC2/publi
 
 
 mosquitto_pub -h 3.66.119.222 -i arturo_rs -q 2 -t esp32/data/grupo2 -m {\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola\"\}                [9:19:50]
+
+
+
+Ejercicio 07/09/2021
+
+mosquitto_pub -h 52.28.71.130 -i arturo_rs -t prueba/raspberryUAM2021 -m {\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola_panteras\"\}
+mosquitto_pub -h 52.28.71.130 -i arturo_rs -t prueba/raspberryUAM2021 -m {\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola_panteras\"\}
+mosquitto_pub -h 52.28.71.130 -i arturo_rs -t prueba/raspberryUAM2021 -m {\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola_panteras\"\}
+
+
+mosquitto_pub -h 52.28.71.130 -i arturo_rs -t -q 0 PALOMA90 -m {\"ID\":\"Arturo_ReySan\",\"msg\":\"Hola_panteras\"\}
